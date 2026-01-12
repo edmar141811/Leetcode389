@@ -1,17 +1,37 @@
-/*
-starting code for now
-*/
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        unordered_map<char,int> lett;
-        char curr;
-        int endS = s.size();
+        //unordered_map<char,int> lettS;
+        unordered_map<char,int> lettT;
+        char addedL;
+        bool found = false;
+        //here this will add all characters if there is a duplicate it will add plus 1 to int
         for(int i = 0; i< s.size(); i++){
-            lett.at(t[i])=t[i];
+            if(lettT.find(s[i])!=lettT.end()){
+                lettT[s[i]] = lettT[s[i]] + 1;
+            }
+            else lettT[s[i]] = {1};
         }
-        //for
-
-
+        //this should find the char if it exist if more than one then will subract 1 from int
+        //if it does not exist will end and produce the variable
+        for(int i = 0; i< t.size(); i++){
+            if(lettT.find(t[i])!=lettT.end()){
+                if(lettT[t[i]]>=0){
+                    if(lettT[t[i]]==0){
+                        addedL = t[i];
+                        found = true;
+                        break;
+                    }
+                    else{
+                       lettT[t[i]] = lettT[t[i]] - 1;  
+                    }
+                }
+            }
+        }
+        //if the found will return the char and if not then will return the last char
+        if(found == true){return addedL;}
+        else {
+            return t[t.size()-1];
+            }
     }
 };
