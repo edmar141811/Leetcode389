@@ -1,3 +1,12 @@
+/*
+Runtime 3 ms
+Beats 13.82%
+
+Memory 9.68 MB 
+Beats 7.50%
+
+There needs to be improvement in both areas, but memory seems to need it more, probably needs more efficient for loop
+*/
 class Solution {
 public:
     char findTheDifference(string s, string t) {
